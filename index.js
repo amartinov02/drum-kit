@@ -4,6 +4,7 @@ for (var i = 0; i < numOfButtons; i++){
 
         var letter = this.innerHTML;
         makeSound(letter);
+        buttonAnimation(letter);
     });
         
     
@@ -11,6 +12,7 @@ for (var i = 0; i < numOfButtons; i++){
 }
 document.addEventListener("keydown", function(event){
     makeSound(event.key);
+    buttonAnimation(event.key);
 })
 
 function makeSound(key){
@@ -46,6 +48,16 @@ switch (key){
             default:
                 console.log(letter);
         }
+}
+
+function buttonAnimation(currentLatter){
+    var activeButton = document.querySelector("." + currentLatter);
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100)
+
 }
 
 // var audio = new Audio('./sounds/tom-1.mp3');
